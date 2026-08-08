@@ -83,3 +83,5 @@ Test if a web server is listening on port 80:
 telnet 192.168.1.10 80
 Test SMTP mail server (port 25):
 telnet mailserver.example.com 25
+
+## Common Ports to Test
