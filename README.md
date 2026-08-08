@@ -178,3 +178,41 @@ Use -n to skip DNS lookups for faster results
 Be cautious with -e flag as it can be a security risk
 Netcat Security Note
 ⚠️ Netcat is a powerful tool. Use it responsibly and only on networks and systems you are authorized to test. Unauthorized port scanning may violate laws and policies.
+
+## Useful Diagnostic Commands
+
+| Command | Purpose |
+|---------|---------|
+| `ping <host>` | Test basic connectivity (ICMP) |
+| `traceroute <host>` | Trace network path |
+| `nslookup <host>` | DNS lookup |
+| `dig <host>` | Detailed DNS lookup |
+| `ss -tlnp` | Show listening TCP ports |
+| `ss -ulnp` | Show listening UDP ports |
+| `netstat -tlnp` | Show listening ports (legacy) |
+| `ip addr show` | Show network interfaces |
+| `ip route show` | Show routing table |
+| `iptables -L -n` | Show firewall rules (Linux) |
+| `firewall-cmd --list-all` | Show firewall rules (firewalld) |
+| `curl -v telnet://<host>:<port>` | Alternative port test using curl |
+
+Start
+  │
+  ├── Can you ping the host?
+  │     ├── YES → Port issue (check service/firewall)
+  │     └── NO  → Network issue (check routing/DNS/firewall)
+  │
+  ├── Can you resolve the hostname?
+  │     ├── YES → Try connecting with IP
+  │     └── NO  → DNS issue (check DNS config)
+  │
+  ├── Is the service running on the target?
+  │     ├── YES → Check firewall rules
+  │     └── NO  → Start the service
+  │
+  ├── Are firewall rules allowing traffic?
+  │     ├── YES → Check for network ACLs/security groups
+  │     └── NO  → Add firewall rule
+  │
+  └── Still not working?
+        └── Check intermediate firewalls, proxies, load balancers
