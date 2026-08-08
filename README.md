@@ -84,5 +84,5 @@ telnet 192.168.1.10 80
 Test SMTP mail server (port 25):
 telnet mailserver.example.com 25
 
-## Common Ports to Test
+### Common Ports to Test
 
