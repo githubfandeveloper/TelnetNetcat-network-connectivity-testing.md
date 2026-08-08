@@ -86,3 +86,18 @@ telnet mailserver.example.com 25
 ```
 ### Common Ports to Test
 
+| Port | Service |
+|------|---------|
+| 22   | SSH     |
+| 25   | SMTP    |
+| 53   | DNS     |
+| 80   | HTTP    |
+| 110  | POP3    |
+| 143  | IMAP    |
+| 443  | HTTPS   |
+| 993  | IMAPS   |
+| 3306 | MySQL   |
+| 3389 | RDP     |
+| 5432 | PostgreSQL |
+| 8080 | HTTP Alt |
+| 8443 | HTTPS Alt |
