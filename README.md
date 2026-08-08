@@ -9,7 +9,7 @@ A practical guide for system administrators to test network connectivity, verify
 
 ## 📋 Table of Contents
 
-- [Telnet](#telnet)
+- [Telnet]
   - [Basic Syntax](#basic-syntax)
   - [Examples](#examples)
   - [Interpreting Results](#interpreting-results)
