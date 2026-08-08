@@ -196,23 +196,4 @@ Netcat Security Note
 | `firewall-cmd --list-all` | Show firewall rules (firewalld) |
 | `curl -v telnet://<host>:<port>` | Alternative port test using curl |
 
-Start
-  │
-  ├── Can you ping the host?
-  │     ├── YES → Port issue (check service/firewall)
-  │     └── NO  → Network issue (check routing/DNS/firewall)
-  │
-  ├── Can you resolve the hostname?
-  │     ├── YES → Try connecting with IP
-  │     └── NO  → DNS issue (check DNS config)
-  │
-  ├── Is the service running on the target?
-  │     ├── YES → Check firewall rules
-  │     └── NO  → Start the service
-  │
-  ├── Are firewall rules allowing traffic?
-  │     ├── YES → Check for network ACLs/security groups
-  │     └── NO  → Add firewall rule
-  │
-  └── Still not working?
-        └── Check intermediate firewalls, proxies, load balancers
+<img width="1037" height="852" alt="image" src="https://github.com/user-attachments/assets/2a0cbc2e-a507-488e-952d-373ef9688088" />
