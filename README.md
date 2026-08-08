@@ -169,3 +169,12 @@ nc <server-IP> 4444
 
 Port Forwarding
 nc -l 8080 | nc destination-host 80
+
+## Netcat Best Practices
+Always use -w flag to set timeouts in scripts
+Use -z flag for port scanning to avoid sending data
+Combine with -v for clear output
+Use -n to skip DNS lookups for faster results
+Be cautious with -e flag as it can be a security risk
+Netcat Security Note
+⚠️ Netcat is a powerful tool. Use it responsibly and only on networks and systems you are authorized to test. Unauthorized port scanning may violate laws and policies.
