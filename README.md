@@ -79,3 +79,46 @@ Telnet is a network protocol and command-line tool used to establish a TCP conne
 
 ```bash
 telnet <hostname or IP> <port>
+Telnet Examples
+Test if a web server is listening on port 80:
+
+bash
+
+Collapse
+Save
+Copy
+1
+telnet 192.168.1.10 80
+Test HTTPS connectivity (port 443):
+
+bash
+
+Collapse
+Save
+Copy
+1
+telnet www.example.com 443
+Test SSH connectivity (port 22):
+
+bash
+
+Collapse
+Save
+Copy
+1
+telnet 10.0.0.5 22
+Test SMTP mail server (port 25):
+
+bash
+
+Collapse
+Save
+Copy
+1
+telnet mailserver.example.com 25
+Interpreting Telnet Results
+| Result | Meaning |
+|---|---|
+| `Connected to <host>` | Port is **open** and service is listening |
+| `Connection refused` | Host is reachable but **port is closed** or service is not running |
+| `Connection timed out` | Host is **unreachable** or a **firewall is blocking** the connection |
