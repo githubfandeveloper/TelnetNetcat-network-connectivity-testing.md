@@ -101,3 +101,71 @@ telnet mailserver.example.com 25
 | 5432 | PostgreSQL |
 | 8080 | HTTP Alt |
 | 8443 | HTTPS Alt |
+
+
+## Netcat
+What is Netcat?
+Netcat (nc) is a versatile networking utility often called the "Swiss Army knife" of networking. It can read and write data across TCP and UDP connections, making it invaluable for network testing and troubleshooting. It is more versatile and powerful than Telnet for network testing.
+
+Netcat Basic Syntax
+nc -v <hostname or IP> <port>
+
+| Flag | Description |
+|------|-------------|
+| `-v` | Verbose - show detailed output |
+| `-z` | Zero I/O mode - scan without sending data |
+| `-w <sec>` | Timeout - wait time for connection |
+| `-u` | UDP mode instead of default TCP |
+| `-l` | Listen mode - wait for incoming connections |
+| `-p <port>` | Specify local source port |
+| `-n` | Numeric only - skip DNS resolution |
+| `-k` | Keep listening after client disconnects |
+| `-e <cmd>` | Execute command after connection (use with caution) |
+| `-q <sec>` | Quit after specified seconds of inactivity |
+
+Test if a single port is open:
+nc -zv 192.168.1.10 443
+
+Test with a timeout (5 seconds):
+nc -zv -w 5 192.168.1.10 3389
+Scan a range of ports:
+nc -zv 192.168.1.10 20-25
+Test UDP connectivity
+nc -zuv 192.168.1.10 53
+Test multiple specific ports:
+nc -zv 192.168.1.10 22 80 443 3306
+
+Interpreting Netcat Results
+ Successful (Port Open)
+ $ nc -zv 192.168.1.10 22
+Connection to 192.168.1.10 22 port [tcp/ssh] succeeded!
+
+❌ Failed (Port Closed)
+$ nc -zv 192.168.1.10 8080
+nc: connect to 192.168.1.10 port 8080 (tcp) failed: Connection refused
+
+⏳ Timed Out (Firewall Blocking)
+$ nc -zv -w 5 192.168.1.10 445
+nc: connect to 192.168.1.10 port 445 (tcp) failed: Connection timed out
+
+Advanced Usage
+Banner Grabbing
+Identify the service running on a port:
+
+echo "" | nc -v -w 3 192.168.1.10 22
+
+File Transfer
+Receiving side:
+nc -l 9999 > received_file.txt
+Sending side:
+nc <receiver-IP> 9999 < file_to_send.txt
+
+Simple Chat
+Server:
+
+nc -l 4444
+Client:
+nc <server-IP> 4444
+
+Port Forwarding
+nc -l 8080 | nc destination-host 80
